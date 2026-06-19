@@ -1,5 +1,13 @@
 # 500+ AI Agent Projects & Use Cases
 
+**English** | [简体中文](README.zh-CN.md) | [Live site](https://agent-project.zqtechlab.com)
+
+> This repository is the ZQTechLab-maintained fork of
+> [ashishpatel26/500-AI-Agents-Projects](https://github.com/ashishpatel26/500-AI-Agents-Projects).
+> It tracks upstream while adding Chinese localization, independent deployment, and original agent
+> courses under [`zqtechlab/`](zqtechlab/). See the
+> [maintenance policy](docs/REPOSITORY_MAINTENANCE.md) for synchronization and release rules.
+
 <div align="center">
 
 [![GitHub Stars](https://img.shields.io/github/stars/ashishpatel26/500-AI-Agents-Projects?style=for-the-badge&color=yellow)](https://github.com/ashishpatel26/500-AI-Agents-Projects/stargazers)

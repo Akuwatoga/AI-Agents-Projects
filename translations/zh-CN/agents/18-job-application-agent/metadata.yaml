@@ -1,0 +1,11 @@
+title: job-application-agent
+description: 根据职位描述和候选人资料生成求职信、面试准备和薪资范围
+author: ashishpatel26
+language: python
+framework: crewai
+tags: [hr, job-search, cover-letter, interview-prep, recruitment]
+industry: human-resources
+difficulty: intermediate
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

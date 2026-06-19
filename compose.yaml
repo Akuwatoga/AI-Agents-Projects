@@ -1,0 +1,53 @@
+name: zqtechlab-agent-project
+
+services:
+  atlas-web:
+    build:
+      context: .
+      args:
+        VITE_BASE_PATH: ${VITE_BASE_PATH:-/}
+        VITE_DEFAULT_LOCALE: ${VITE_DEFAULT_LOCALE:-zh-CN}
+    image: ${ATLAS_IMAGE:-ai-agents-atlas:local}
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.50
+    pids_limit: 100
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    expose:
+      - "8080"
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=coolify
+      - traefik.http.middlewares.agent-project-gzip.compress=true
+      - traefik.http.middlewares.agent-project-inflight.inflightreq.amount=100
+      - traefik.http.middlewares.agent-project-ratelimit.ratelimit.average=30
+      - traefik.http.middlewares.agent-project-ratelimit.ratelimit.burst=60
+      - traefik.http.middlewares.agent-project-ratelimit.ratelimit.period=1s
+      - traefik.http.middlewares.agent-project-redirect.redirectscheme.scheme=https
+      - traefik.http.routers.agent-project-http.entryPoints=http
+      - traefik.http.routers.agent-project-http.middlewares=agent-project-redirect
+      - traefik.http.routers.agent-project-http.rule=Host(`${AGENT_PROJECT_DOMAIN:-agent-project.zqtechlab.com}`)
+      - traefik.http.routers.agent-project-https.entryPoints=https
+      - traefik.http.routers.agent-project-https.middlewares=agent-project-inflight,agent-project-ratelimit,agent-project-gzip
+      - traefik.http.routers.agent-project-https.rule=Host(`${AGENT_PROJECT_DOMAIN:-agent-project.zqtechlab.com}`)
+      - traefik.http.routers.agent-project-https.tls=true
+      - traefik.http.routers.agent-project-https.tls.certresolver=letsencrypt
+      - traefik.http.services.agent-project.loadbalancer.server.port=8080
+    networks:
+      - coolify
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/healthz"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+networks:
+  coolify:
+    external: true

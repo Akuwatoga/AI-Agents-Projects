@@ -169,7 +169,15 @@ img {
 .icon-link {
   padding: 9px 12px;
   border: 1px solid var(--border);
+  background: transparent;
   color: var(--soft);
+  cursor: pointer;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .icon-link:hover,
@@ -1124,6 +1132,10 @@ main {
   }
 
   .icon-link {
+    flex: 1;
+  }
+
+  .topbar-actions {
     width: 100%;
   }
 

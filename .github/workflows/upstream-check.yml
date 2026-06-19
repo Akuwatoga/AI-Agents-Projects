@@ -1,0 +1,31 @@
+name: Check upstream updates
+
+on:
+  schedule:
+    - cron: "30 1 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Compare with upstream main
+        shell: bash
+        run: |
+          git remote add upstream https://github.com/ashishpatel26/500-AI-Agents-Projects.git
+          git fetch --no-tags upstream main
+          behind="$(git rev-list --count HEAD..upstream/main)"
+          ahead="$(git rev-list --count upstream/main..HEAD)"
+          {
+            echo "## Upstream status"
+            echo ""
+            echo "- Commits available from upstream: ${behind}"
+            echo "- Commits maintained in this fork: ${ahead}"
+          } >> "$GITHUB_STEP_SUMMARY"
+          test "$behind" -eq 0

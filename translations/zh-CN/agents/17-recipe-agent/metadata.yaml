@@ -1,0 +1,11 @@
+title: recipe-recommendation-agent
+description: 根据可用食材推荐食谱，包含说明和营养信息
+author: ashishpatel26
+language: python
+framework: langchain
+tags: [recipes, food, nutrition, recommendation]
+industry: food
+difficulty: beginner
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

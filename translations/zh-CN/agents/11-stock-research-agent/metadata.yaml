@@ -1,0 +1,11 @@
+title: stock-research-agent
+description: 实时股票基本面数据与 AI 驱动的投资分析
+author: ashishpatel26
+language: python
+framework: langchain
+tags: [finance, stocks, investment, yfinance, analysis]
+industry: finance
+difficulty: intermediate
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

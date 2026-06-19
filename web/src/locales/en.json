@@ -1,0 +1,217 @@
+{
+  "meta": {
+    "title": "500 AI Agents Atlas",
+    "description": "A React atlas for 500+ AI agent projects, runnable implementations, use cases, and the CrewAI MCP course."
+  },
+  "nav": {
+    "atlas": "Atlas",
+    "course": "Course",
+    "agents": "Agents",
+    "useCases": "Use cases",
+    "frameworks": "Frameworks",
+    "mainAria": "Main navigation",
+    "projectMap": "500+ project map"
+  },
+  "common": {
+    "github": "GitHub",
+    "all": "All",
+    "detail": "Detail",
+    "redirect": "Redirect",
+    "code": "code",
+    "copy": "Copy",
+    "copied": "Copied",
+    "files": "Files",
+    "searchCatalog": "Search catalog",
+    "frameworkFilter": "Framework filter",
+    "fileNotFound": "# File content not found"
+  },
+  "home": {
+    "eyebrow": "Course front page plus project atlas",
+    "title": "500+ AI Agent Projects",
+    "description": "A React atlas for learning, browsing, running, and redirecting into the strongest AI agent examples in this repository.",
+    "startCourse": "Start course",
+    "browseUseCases": "Browse use cases",
+    "graphAria": "Interactive agent atlas graph",
+    "graphCourse": "CrewAI course",
+    "graphAgents": "Runnable agents",
+    "graphUseCases": "Use cases",
+    "graphFrameworks": "Frameworks",
+    "graphCodePages": "Code pages",
+    "agentState": "agent_state",
+    "ready": "ready",
+    "nodes": "nodes: {count}",
+    "statsAgents": "Runnable agents",
+    "statsUseCases": "README use cases",
+    "statsFrameworks": "Framework families",
+    "statsLessons": "Course lessons",
+    "startHere": "Start here",
+    "courseTitle": "CrewAI with FastMCP-style lessons at the front",
+    "courseDescription": "The course is the guided entry point, then the atlas opens into local code agents and README-linked external examples.",
+    "openCourse": "Open course page",
+    "liveCatalog": "Live catalog",
+    "searchTitle": "Search every local agent and README table row",
+    "heroAlt": "AI agent use case map",
+    "runnableCode": "Runnable code",
+    "localAgents": "Local agent implementations",
+    "viewAgents": "View all agents",
+    "readmeUseCases": "README use cases",
+    "externalProjects": "External projects with dedicated pages",
+    "viewUseCases": "View all use cases",
+    "decisionSupport": "Decision support",
+    "frameworkMap": "Framework map",
+    "compareFrameworks": "Compare frameworks"
+  },
+  "search": {
+    "placeholder": "Search agents, use cases, frameworks, industries"
+  },
+  "course": {
+    "eyebrow": "Course",
+    "title": "CrewAI with FastMCP-style integration",
+    "fallbackDescription": "A practical course for building CrewAI workflows with MCP-style tool boundaries.",
+    "learningPath": "Learning path",
+    "learningDescription": "Each lesson has its own page with objectives, run commands, code files, and a code walkthrough surface.",
+    "lessons": "Lessons",
+    "separatePages": "Separate lesson pages",
+    "lesson": "Lesson {number}",
+    "objectives": "Objectives",
+    "run": "Run"
+  },
+  "agents": {
+    "eyebrow": "Runnable agents",
+    "title": "Local code pages for every implementation",
+    "description": "Each agent page explains the framework, setup, run commands, architecture, and code structure from the files in agents/.",
+    "agentEyebrow": "{framework} agent",
+    "runFiveMinutes": "Run in 5 minutes",
+    "architecture": "Architecture",
+    "howItWorks": "How it works",
+    "related": "Related {framework} agents",
+    "defaultLoad": "Loads configuration for {llm}",
+    "defaultWorkflow": "Creates a {framework} workflow around the core task",
+    "defaultInput": "Accepts user input through the command line or defaults",
+    "defaultTools": "Calls tools, models, or local data helpers",
+    "defaultResult": "Returns a structured result for the user",
+    "metadata": "Project metadata",
+    "path": "Path",
+    "framework": "Framework",
+    "difficulty": "Difficulty",
+    "industry": "Industry",
+    "model": "Model",
+    "language": "Language",
+    "flowInput": "Input",
+    "flowState": "State",
+    "flowNode": "Node",
+    "flowTool": "Tool",
+    "flowResponse": "Response",
+    "flowGoal": "Goal",
+    "flowAgent": "Agent",
+    "flowTask": "Task",
+    "flowCrew": "Crew",
+    "flowOutput": "Output",
+    "flowPlanner": "Planner",
+    "flowModel": "Model"
+  },
+  "useCases": {
+    "eyebrow": "README catalog",
+    "title": "Dedicated page for every README use case",
+    "description": "The catalog is parsed from the repository README tables, so each external project gets a page, source section, and redirect route.",
+    "matching": "{count} matching use cases",
+    "metadata": "Use case metadata",
+    "framework": "Framework",
+    "industry": "Industry",
+    "source": "Source",
+    "resource": "Resource",
+    "openRedirect": "Open redirect",
+    "whatThisAdds": "What this adds",
+    "whatThisAddsDescription": "This page turns a README table row into a durable catalog entry with context, framework grouping, industry filtering, and a redirect route for the source project.",
+    "relatedAgents": "Related local agents",
+    "similar": "Similar use cases",
+    "redirectEyebrow": "Redirect",
+    "opening": "Opening {target}.",
+    "sourceProject": "the source project",
+    "openNow": "Open now"
+  },
+  "frameworks": {
+    "eyebrow": "Frameworks",
+    "choose": "Choose the right agent framework",
+    "description": "Compare the main framework families represented in this repository, then jump into matching agents and examples.",
+    "localAgents": "local agents",
+    "readmeUseCases": "README use cases",
+    "open": "Open framework",
+    "matching": "Matching examples"
+  },
+  "code": {
+    "walkthrough": "Code walkthrough",
+    "imports": "Imports",
+    "functions": "Functions",
+    "classes": "Classes",
+    "role": "Role",
+    "noImports": "No import block in this file section.",
+    "noFunctions": "No top-level functions detected.",
+    "noClasses": "No classes detected.",
+    "entrypoint": "Entrypoint for {framework} implementation.",
+    "reference": "Reference file for {context}.",
+    "lineCount": "{count} non-empty lines are bundled into this page."
+  },
+  "notFound": {
+    "eyebrow": "Missing page",
+    "title": "This atlas page was not found",
+    "description": "The catalog route does not match a local agent, lesson, use case, or framework.",
+    "back": "Back to atlas"
+  },
+  "catalog": {
+    "courseLessons": {
+      "lesson-01": {
+        "title": "First CrewAI Researcher",
+        "summary": "Build a single researcher agent, give it a clear role, run one task, and inspect the response path.",
+        "objectives": [
+          "Install the CrewAI lesson dependencies",
+          "Define a role-driven research agent",
+          "Attach the agent to one clear task",
+          "Run the crew and read the final output"
+        ]
+      },
+      "lesson-02": {
+        "title": "Multi-Agent Research Crew",
+        "summary": "Split research, writing, and editing responsibilities into a sequential CrewAI workflow.",
+        "objectives": [
+          "Create multiple specialist agents",
+          "Connect tasks into a sequential process",
+          "Pass context from researcher to writer to editor",
+          "Understand where tools fit into CrewAI"
+        ]
+      },
+      "lesson-03": {
+        "title": "CrewAI With FastMCP-Style Tools",
+        "summary": "Use a FastMCP-style tool surface to let CrewAI agents query structured project data and produce a status report.",
+        "objectives": [
+          "Model a tool contract that resembles MCP server access",
+          "Let agents request project records through tools",
+          "Generate a management-ready project status report",
+          "See how MCP-style boundaries improve agent design"
+        ]
+      }
+    },
+    "frameworks": {
+      "langgraph": {
+        "bestFor": "Stateful workflows, graph control, retries, RAG, and production routing.",
+        "decision": "Choose it when the agent needs explicit state transitions and reliable recovery paths."
+      },
+      "crewai": {
+        "bestFor": "Role-based teams, business automation, repeatable task handoffs, and fast prototypes.",
+        "decision": "Choose it when the project maps naturally to specialists with goals and tasks."
+      },
+      "autogen": {
+        "bestFor": "Code generation, research collaboration, feedback loops, and executable experiments.",
+        "decision": "Choose it when agents need to talk, critique, run code, and iterate."
+      },
+      "agno": {
+        "bestFor": "Lightweight tool agents, quick iteration, model flexibility, and compact apps.",
+        "decision": "Choose it when you want a focused tool-calling agent with low ceremony."
+      },
+      "llamaindex": {
+        "bestFor": "Document Q&A, enterprise retrieval, data connectors, and knowledge workflows.",
+        "decision": "Choose it when the data pipeline matters as much as the agent behavior."
+      }
+    }
+  }
+}

@@ -1,12 +1,15 @@
 {
   "name": "ai-agents-atlas",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.0-zh.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "i18n:check": "node scripts/check-i18n.mjs",
+    "i18n:ci": "node scripts/check-i18n.mjs --ci",
+    "i18n:check:strict": "node scripts/check-i18n.mjs --strict"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

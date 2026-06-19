@@ -38,12 +38,14 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Install website dependencies
-        run: npm install
+        run: npm ci
         working-directory: web
 
       - name: Build React atlas
         run: npm run build
         working-directory: web
+        env:
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

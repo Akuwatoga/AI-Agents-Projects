@@ -1,0 +1,11 @@
+title: resume-parser-agent
+description: 将简历解析为结构化 JSON 并根据职位描述评估候选人匹配度
+author: ashishpatel26
+language: python
+framework: langchain
+tags: [hr, recruitment, resume, nlp, parsing]
+industry: human-resources
+difficulty: beginner
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

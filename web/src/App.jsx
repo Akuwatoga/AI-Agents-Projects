@@ -13,6 +13,7 @@ import {
   Github,
   GraduationCap,
   Layers3,
+  Languages,
   Network,
   Play,
   Search,
@@ -21,13 +22,14 @@ import {
   Zap,
 } from "lucide-react";
 import { catalog, slugify, stripMarkdown } from "./content.js";
+import { currentLocale, setLocale, t } from "./i18n.js";
 
 const routeLabels = [
-  { path: "/", label: "Atlas" },
-  { path: "/course", label: "Course" },
-  { path: "/agents", label: "Agents" },
-  { path: "/use-cases", label: "Use cases" },
-  { path: "/frameworks", label: "Frameworks" },
+  { path: "/", label: t("nav.atlas") },
+  { path: "/course", label: t("nav.course") },
+  { path: "/agents", label: t("nav.agents") },
+  { path: "/use-cases", label: t("nav.useCases") },
+  { path: "/frameworks", label: t("nav.frameworks") },
 ];
 
 function useHashRoute() {
@@ -47,7 +49,7 @@ function pathFor(route) {
 }
 
 function normalize(value = "") {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  return value.toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 }
 
 function matchesQuery(item, query) {
@@ -88,11 +90,11 @@ function Shell({ route, children }) {
           </span>
           <span>
             <strong>AI Agents Atlas</strong>
-            <small>500+ project map</small>
+            <small>{t("nav.projectMap")}</small>
           </span>
         </a>
 
-        <nav className="nav-links" aria-label="Main navigation">
+        <nav className="nav-links" aria-label={t("nav.mainAria")}>
           {routeLabels.map((item) => (
             <a
               className={
@@ -108,10 +110,21 @@ function Shell({ route, children }) {
           ))}
         </nav>
 
-        <a className="icon-link" href="https://github.com/ashishpatel26/500-AI-Agents-Projects">
-          <Github size={18} aria-hidden="true" />
-          <span>GitHub</span>
-        </a>
+        <div className="topbar-actions">
+          <button
+            className="icon-link"
+            onClick={() => setLocale(currentLocale === "en" ? "zh-CN" : "en")}
+            title={currentLocale === "en" ? "中文" : "English"}
+            type="button"
+          >
+            <Languages size={18} aria-hidden="true" />
+            <span>{currentLocale === "en" ? "中文" : "English"}</span>
+          </button>
+          <a className="icon-link" href="https://github.com/Akuwatoga/AI-Agents-Projects">
+            <Github size={18} aria-hidden="true" />
+            <span>{t("common.github")}</span>
+          </a>
+        </div>
       </header>
       <main>{children}</main>
     </div>
@@ -120,14 +133,14 @@ function Shell({ route, children }) {
 
 function StatStrip() {
   const stats = [
-    { label: "Runnable agents", value: catalog.agents.length, icon: Code2 },
-    { label: "README use cases", value: catalog.useCases.length, icon: Boxes },
-    { label: "Framework families", value: catalog.frameworks.length, icon: Workflow },
-    { label: "Course lessons", value: catalog.courseLessons.length, icon: GraduationCap },
+    { label: t("home.statsAgents"), value: catalog.agents.length, icon: Code2 },
+    { label: t("home.statsUseCases"), value: catalog.useCases.length, icon: Boxes },
+    { label: t("home.statsFrameworks"), value: catalog.frameworks.length, icon: Workflow },
+    { label: t("home.statsLessons"), value: catalog.courseLessons.length, icon: GraduationCap },
   ];
 
   return (
-    <section className="stat-strip" aria-label="Repository statistics">
+    <section className="stat-strip" aria-label={t("home.statsAgents")}>
       {stats.map((stat) => {
         const Icon = stat.icon;
         return (
@@ -144,35 +157,32 @@ function StatStrip() {
 
 function GraphHero() {
   const nodes = [
-    { label: "CrewAI course", path: "/course", x: 11, y: 22, tone: "green" },
-    { label: "Runnable agents", path: "/agents", x: 52, y: 13, tone: "cyan" },
-    { label: "Use cases", path: "/use-cases", x: 74, y: 48, tone: "amber" },
-    { label: "Frameworks", path: "/frameworks", x: 24, y: 65, tone: "rose" },
-    { label: "Code pages", path: "/agents/01-web-research-agent", x: 54, y: 78, tone: "violet" },
+    { label: t("home.graphCourse"), path: "/course", x: 11, y: 22, tone: "green" },
+    { label: t("home.graphAgents"), path: "/agents", x: 52, y: 13, tone: "cyan" },
+    { label: t("home.graphUseCases"), path: "/use-cases", x: 74, y: 48, tone: "amber" },
+    { label: t("home.graphFrameworks"), path: "/frameworks", x: 24, y: 65, tone: "rose" },
+    { label: t("home.graphCodePages"), path: "/agents/01-web-research-agent", x: 54, y: 78, tone: "violet" },
   ];
 
   return (
     <section className="hero-grid">
       <div className="hero-copy">
-        <p className="eyebrow">Course front page plus project atlas</p>
-        <h1>500+ AI Agent Projects</h1>
-        <p>
-          A premium React atlas for learning, browsing, running, and redirecting into the
-          strongest AI agent examples in this repository.
-        </p>
+        <p className="eyebrow">{t("home.eyebrow")}</p>
+        <h1>{t("home.title")}</h1>
+        <p>{t("home.description")}</p>
         <div className="hero-actions">
           <a className="primary-action" href={pathFor("/course")}>
             <GraduationCap size={18} aria-hidden="true" />
-            Start course
+            {t("home.startCourse")}
           </a>
           <a className="secondary-action" href={pathFor("/use-cases")}>
             <Search size={18} aria-hidden="true" />
-            Browse use cases
+            {t("home.browseUseCases")}
           </a>
         </div>
       </div>
 
-      <div className="graph-stage" aria-label="Interactive agent atlas graph">
+      <div className="graph-stage" aria-label={t("home.graphAria")}>
         <svg className="edge-layer" viewBox="0 0 100 100" preserveAspectRatio="none">
           <path className="graph-edge edge-one" d="M12 25 C30 8, 42 12, 52 16" />
           <path className="graph-edge edge-two" d="M54 18 C69 23, 78 33, 75 50" />
@@ -192,9 +202,9 @@ function GraphHero() {
           </a>
         ))}
         <div className="graph-console">
-          <span>agent_state</span>
-          <strong>ready</strong>
-          <small>nodes: {catalog.agents.length + catalog.frameworks.length}</small>
+          <span>{t("home.agentState")}</span>
+          <strong>{t("home.ready")}</strong>
+          <small>{t("home.nodes", { count: catalog.agents.length + catalog.frameworks.length })}</small>
         </div>
       </div>
     </section>
@@ -213,7 +223,7 @@ function SearchPanel({ compact = false }) {
         <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search agents, use cases, frameworks, industries"
+          placeholder={t("search.placeholder")}
         />
       </label>
 
@@ -248,33 +258,30 @@ function HomePage() {
 
       <section className="split-section">
         <div className="section-copy">
-          <p className="eyebrow">Start here</p>
-          <h2>CrewAI with FastMCP-style lessons at the front</h2>
-          <p>
-            The course is the guided entry point, then the atlas opens into local code agents
-            and README-linked external examples.
-          </p>
+          <p className="eyebrow">{t("home.startHere")}</p>
+          <h2>{t("home.courseTitle")}</h2>
+          <p>{t("home.courseDescription")}</p>
           <a className="inline-action" href={pathFor("/course")}>
-            Open course page <ArrowRight size={16} aria-hidden="true" />
+            {t("home.openCourse")} <ArrowRight size={16} aria-hidden="true" />
           </a>
         </div>
         <CourseRail />
       </section>
 
       <section className="media-band">
-        <img src={catalog.images.hero} alt="AI agent use case map" />
+        <img src={catalog.images.hero} alt={t("home.heroAlt")} />
         <div>
-          <p className="eyebrow">Live catalog</p>
-          <h2>Search every local agent and README table row</h2>
+          <p className="eyebrow">{t("home.liveCatalog")}</p>
+          <h2>{t("home.searchTitle")}</h2>
           <SearchPanel compact />
         </div>
       </section>
 
       <section className="content-band">
         <SectionHeader
-          eyebrow="Runnable code"
-          title="Local agent implementations"
-          action={{ label: "View all agents", href: "/agents" }}
+          eyebrow={t("home.runnableCode")}
+          title={t("home.localAgents")}
+          action={{ label: t("home.viewAgents"), href: "/agents" }}
         />
         <div className="card-grid">
           {featuredAgents.map((agent) => (
@@ -285,9 +292,9 @@ function HomePage() {
 
       <section className="content-band">
         <SectionHeader
-          eyebrow="README use cases"
-          title="External projects with dedicated pages"
-          action={{ label: "View all use cases", href: "/use-cases" }}
+          eyebrow={t("home.readmeUseCases")}
+          title={t("home.externalProjects")}
+          action={{ label: t("home.viewUseCases"), href: "/use-cases" }}
         />
         <div className="usecase-grid">
           {featuredUseCases.map((useCase) => (
@@ -338,9 +345,9 @@ function FrameworkStrip() {
   return (
     <section className="content-band">
       <SectionHeader
-        eyebrow="Decision support"
-        title="Framework map"
-        action={{ label: "Compare frameworks", href: "/frameworks" }}
+        eyebrow={t("home.decisionSupport")}
+        title={t("home.frameworkMap")}
+        action={{ label: t("home.compareFrameworks"), href: "/frameworks" }}
       />
       <div className="framework-grid">
         {catalog.frameworks.map((framework) => (
@@ -389,12 +396,12 @@ function UseCaseCard({ useCase }) {
       <div className="card-actions">
         <a href={pathFor(`/use-cases/${useCase.id}`)}>
           <FileText size={15} aria-hidden="true" />
-          Detail
+          {t("common.detail")}
         </a>
         {useCase.url ? (
           <a href={pathFor(`/go/${useCase.id}`)}>
             <ExternalLink size={15} aria-hidden="true" />
-            Redirect
+            {t("common.redirect")}
           </a>
         ) : null}
       </div>
@@ -406,18 +413,15 @@ function CoursePage() {
   return (
     <>
       <PageHero
-        eyebrow="Course"
-        title="CrewAI with FastMCP-style integration"
-        description={getIntro(catalog.courseReadme, "A practical course for building CrewAI workflows with MCP-style tool boundaries.")}
+        eyebrow={t("course.eyebrow")}
+        title={t("course.title")}
+        description={getIntro(catalog.courseReadme, t("course.fallbackDescription"))}
         icon={GraduationCap}
       />
       <section className="split-section">
         <div className="section-copy">
-          <h2>Learning path</h2>
-          <p>
-            Each lesson has its own page with objectives, run commands, code files, and a code
-            walkthrough surface.
-          </p>
+          <h2>{t("course.learningPath")}</h2>
+          <p>{t("course.learningDescription")}</p>
           <div className="command-stack">
             <CodeBlock
               code={[
@@ -432,7 +436,7 @@ function CoursePage() {
         <CourseRail />
       </section>
       <section className="content-band">
-        <SectionHeader eyebrow="Lessons" title="Separate lesson pages" />
+        <SectionHeader eyebrow={t("course.lessons")} title={t("course.separatePages")} />
         <div className="lesson-grid">
           {catalog.courseLessons.map((lesson) => (
             <a className="lesson-card" href={pathFor(`/course/${lesson.slug}`)} key={lesson.slug}>
@@ -462,14 +466,14 @@ function LessonPage({ lesson }) {
   return (
     <>
       <PageHero
-        eyebrow={`Lesson ${lesson.number}`}
+        eyebrow={t("course.lesson", { number: lesson.number })}
         title={lesson.title}
         description={lesson.summary}
         icon={BookOpen}
       />
       <section className="detail-layout">
         <aside className="detail-aside">
-          <h2>Objectives</h2>
+          <h2>{t("course.objectives")}</h2>
           <ul className="check-list">
             {lesson.objectives.map((objective) => (
               <li key={objective}>
@@ -478,12 +482,12 @@ function LessonPage({ lesson }) {
               </li>
             ))}
           </ul>
-          <h2>Run</h2>
+          <h2>{t("course.run")}</h2>
           <CodeBlock code={lesson.runCommands.join("\n")} compact />
         </aside>
         <article className="detail-main">
           <FileTabs files={lesson.files} selected={selectedFile} onSelect={setSelectedFile} />
-          <CodeBlock code={file?.content || "# File content not found"} />
+          <CodeBlock code={file?.content || t("common.fileNotFound")} />
           <CodeExplanation code={file?.content || ""} context="lesson" />
         </article>
       </section>
@@ -504,9 +508,9 @@ function AgentsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Runnable agents"
-        title="Local code pages for every implementation"
-        description="Each agent page explains the framework, setup, run commands, architecture, and code structure from the files in agents/."
+        eyebrow={t("agents.eyebrow")}
+        title={t("agents.title")}
+        description={t("agents.description")}
         icon={Code2}
       />
       <CatalogToolbar query={query} onQuery={setQuery} filters={frameworks} filter={framework} onFilter={setFramework} />
@@ -537,7 +541,7 @@ function AgentPage({ agent }) {
   return (
     <>
       <PageHero
-        eyebrow={`${agent.framework} agent`}
+        eyebrow={t("agents.agentEyebrow", { framework: agent.framework })}
         title={agent.title}
         description={agent.description}
         icon={GitBranch}
@@ -545,7 +549,7 @@ function AgentPage({ agent }) {
       <section className="detail-layout">
         <aside className="detail-aside">
           <MetadataPanel agent={agent} />
-          <h2>Run in 5 minutes</h2>
+          <h2>{t("agents.runFiveMinutes")}</h2>
           <CodeBlock
             code={
               (agent.runCommands[0] || agent.setupCommands[0]) ??
@@ -553,12 +557,12 @@ function AgentPage({ agent }) {
             }
             compact
           />
-          <h2>Architecture</h2>
+          <h2>{t("agents.architecture")}</h2>
           <FlowTrace agent={agent} />
         </aside>
         <article className="detail-main">
           <section className="explain-panel">
-            <h2>How it works</h2>
+            <h2>{t("agents.howItWorks")}</h2>
             <p>{getIntro(agent.readme, agent.description)}</p>
             <ul className="check-list">
               {(agent.features.length ? agent.features : defaultAgentSteps(agent)).map((feature) => (
@@ -570,11 +574,11 @@ function AgentPage({ agent }) {
             </ul>
           </section>
           <FileTabs files={files} selected={selectedFile} onSelect={setSelectedFile} />
-          <CodeBlock code={selected.content || "# File content not found"} />
+          <CodeBlock code={selected.content || t("common.fileNotFound")} />
           <CodeExplanation code={selected.content || ""} context={selected.label} agent={agent} />
           {related.length ? (
             <section className="related-band">
-              <h2>Related {agent.framework} agents</h2>
+              <h2>{t("agents.related", { framework: agent.framework })}</h2>
               <div className="mini-card-grid">
                 {related.map((item) => (
                   <AgentCard agent={item} key={item.id} />
@@ -590,27 +594,27 @@ function AgentPage({ agent }) {
 
 function defaultAgentSteps(agent) {
   return [
-    `Loads configuration for ${agent.llm}`,
-    `Creates a ${agent.framework} workflow around the core task`,
-    "Accepts user input through the command line or defaults",
-    "Calls tools, models, or local data helpers",
-    "Returns a structured result for the user",
+    t("agents.defaultLoad", { llm: agent.llm }),
+    t("agents.defaultWorkflow", { framework: agent.framework }),
+    t("agents.defaultInput"),
+    t("agents.defaultTools"),
+    t("agents.defaultResult"),
   ];
 }
 
 function MetadataPanel({ agent }) {
   const rows = [
-    ["Path", agent.localPath],
-    ["Framework", agent.framework],
-    ["Difficulty", agent.difficulty],
-    ["Industry", agent.industry],
-    ["Model", agent.llm],
-    ["Language", agent.language],
+    [t("agents.path"), agent.localPath],
+    [t("agents.framework"), agent.framework],
+    [t("agents.difficulty"), agent.difficulty],
+    [t("agents.industry"), agent.industry],
+    [t("agents.model"), agent.llm],
+    [t("agents.language"), agent.language],
   ];
 
   return (
     <section className="metadata-panel">
-      <h2>Project metadata</h2>
+      <h2>{t("agents.metadata")}</h2>
       {rows.map(([label, value]) => (
         <div className="meta-row" key={label}>
           <span>{label}</span>
@@ -624,17 +628,17 @@ function MetadataPanel({ agent }) {
 function FlowTrace({ agent }) {
   const steps =
     agent.framework === "Langgraph" || agent.framework === "LangGraph"
-      ? ["Input", "State", "Node", "Tool", "Response"]
+      ? ["flowInput", "flowState", "flowNode", "flowTool", "flowResponse"]
       : agent.framework === "Crewai" || agent.framework === "CrewAI"
-        ? ["Goal", "Agent", "Task", "Crew", "Output"]
-        : ["Input", "Planner", "Tool", "Model", "Output"];
+        ? ["flowGoal", "flowAgent", "flowTask", "flowCrew", "flowOutput"]
+        : ["flowInput", "flowPlanner", "flowTool", "flowModel", "flowOutput"];
 
   return (
     <div className="flow-trace">
       {steps.map((step, index) => (
         <div className="flow-step" key={step}>
           <span>{index + 1}</span>
-          <strong>{step}</strong>
+          <strong>{t(`agents.${step}`)}</strong>
         </div>
       ))}
     </div>
@@ -654,14 +658,14 @@ function UseCasesPage() {
   return (
     <>
       <PageHero
-        eyebrow="README catalog"
-        title="Dedicated page for every README use case"
-        description="The catalog is parsed from the repository README tables, so each external project gets a page, source section, and redirect route."
+        eyebrow={t("useCases.eyebrow")}
+        title={t("useCases.title")}
+        description={t("useCases.description")}
         icon={Boxes}
       />
       <CatalogToolbar query={query} onQuery={setQuery} filters={frameworks} filter={framework} onFilter={setFramework} />
       <section className="content-band">
-        <div className="catalog-count">{useCases.length} matching use cases</div>
+        <div className="catalog-count">{t("useCases.matching", { count: useCases.length })}</div>
         <div className="usecase-grid">
           {useCases.map((useCase) => (
             <UseCaseCard useCase={useCase} key={useCase.id} />
@@ -695,38 +699,35 @@ function UseCasePage({ useCase }) {
       <section className="detail-layout">
         <aside className="detail-aside">
           <section className="metadata-panel">
-            <h2>Use case metadata</h2>
+            <h2>{t("useCases.metadata")}</h2>
             <div className="meta-row">
-              <span>Framework</span>
+              <span>{t("useCases.framework")}</span>
               <strong>{useCase.framework}</strong>
             </div>
             <div className="meta-row">
-              <span>Industry</span>
+              <span>{t("useCases.industry")}</span>
               <strong>{useCase.industry}</strong>
             </div>
             <div className="meta-row">
-              <span>Source</span>
+              <span>{t("useCases.source")}</span>
               <strong>{useCase.sourceHeading}</strong>
             </div>
             <div className="meta-row">
-              <span>Resource</span>
+              <span>{t("useCases.resource")}</span>
               <strong>{useCase.resourceType}</strong>
             </div>
           </section>
           {useCase.url ? (
             <a className="primary-action full-width" href={pathFor(`/go/${useCase.id}`)}>
               <ExternalLink size={18} aria-hidden="true" />
-              Open redirect
+              {t("useCases.openRedirect")}
             </a>
           ) : null}
         </aside>
         <article className="detail-main">
           <section className="explain-panel">
-            <h2>What this adds</h2>
-            <p>
-              This page turns a README table row into a durable catalog entry with context,
-              framework grouping, industry filtering, and a redirect route for the source project.
-            </p>
+            <h2>{t("useCases.whatThisAdds")}</h2>
+            <p>{t("useCases.whatThisAddsDescription")}</p>
             <div className="source-block">
               <strong>{useCase.title}</strong>
               <span>{useCase.description}</span>
@@ -735,7 +736,7 @@ function UseCasePage({ useCase }) {
           </section>
           {relatedAgents.length ? (
             <section className="related-band">
-              <h2>Related local agents</h2>
+              <h2>{t("useCases.relatedAgents")}</h2>
               <div className="mini-card-grid">
                 {relatedAgents.map((agent) => (
                   <AgentCard agent={agent} key={agent.id} />
@@ -745,7 +746,7 @@ function UseCasePage({ useCase }) {
           ) : null}
           {relatedCases.length ? (
             <section className="related-band">
-              <h2>Similar use cases</h2>
+              <h2>{t("useCases.similar")}</h2>
               <div className="usecase-grid compact-grid">
                 {relatedCases.map((item) => (
                   <UseCaseCard useCase={item} key={item.id} />
@@ -772,14 +773,14 @@ function RedirectPage({ useCase }) {
 
   return (
     <PageHero
-      eyebrow="Redirect"
+      eyebrow={t("useCases.redirectEyebrow")}
       title={useCase.title}
-      description={`Opening ${useCase.url || "the source project"}.`}
+      description={t("useCases.opening", { target: useCase.url || t("useCases.sourceProject") })}
       icon={ExternalLink}
       action={
         useCase.url
           ? {
-              label: "Open now",
+              label: t("useCases.openNow"),
               href: useCase.url,
               external: true,
             }
@@ -796,12 +797,12 @@ function FrameworksPage({ frameworkSlug }) {
   return (
     <>
       <PageHero
-        eyebrow="Frameworks"
-        title={selected ? selected.name : "Choose the right agent framework"}
+        eyebrow={t("frameworks.eyebrow")}
+        title={selected ? selected.name : t("frameworks.choose")}
         description={
           selected
             ? selected.decision
-            : "Compare the main framework families represented in this repository, then jump into matching agents and examples."
+            : t("frameworks.description")
         }
         icon={Workflow}
       />
@@ -823,12 +824,12 @@ function FrameworksPage({ frameworkSlug }) {
                 </div>
                 <div className="framework-stats">
                   <strong>{agents.length}</strong>
-                  <span>local agents</span>
+                  <span>{t("frameworks.localAgents")}</span>
                   <strong>{useCases.length}</strong>
-                  <span>README use cases</span>
+                  <span>{t("frameworks.readmeUseCases")}</span>
                 </div>
                 <a className="inline-action" href={pathFor(`/frameworks/${framework.slug}`)}>
-                  Open framework <ArrowRight size={16} aria-hidden="true" />
+                  {t("frameworks.open")} <ArrowRight size={16} aria-hidden="true" />
                 </a>
               </article>
             );
@@ -837,7 +838,7 @@ function FrameworksPage({ frameworkSlug }) {
       </section>
       {selected ? (
         <section className="content-band">
-          <SectionHeader eyebrow={selected.name} title="Matching examples" />
+          <SectionHeader eyebrow={selected.name} title={t("frameworks.matching")} />
           <div className="card-grid">
             {catalog.agents
               .filter((agent) => slugify(agent.framework) === selected.slug)
@@ -860,10 +861,10 @@ function CatalogToolbar({ query, onQuery, filters, filter, onFilter }) {
         <input
           value={query}
           onChange={(event) => onQuery(event.target.value)}
-          placeholder="Search catalog"
+          placeholder={t("common.searchCatalog")}
         />
       </label>
-      <div className="filter-row" aria-label="Framework filter">
+      <div className="filter-row" aria-label={t("common.frameworkFilter")}>
         <Filter size={17} aria-hidden="true" />
         {filters.map((item) => (
           <button
@@ -872,7 +873,7 @@ function CatalogToolbar({ query, onQuery, filters, filter, onFilter }) {
             type="button"
             key={item}
           >
-            {item === "all" ? "All" : catalog.frameworks.find((fw) => fw.slug === item)?.name || item}
+            {item === "all" ? t("common.all") : catalog.frameworks.find((fw) => fw.slug === item)?.name || item}
           </button>
         ))}
       </div>
@@ -907,7 +908,7 @@ function PageHero({ eyebrow, title, description, icon: Icon, action }) {
 
 function FileTabs({ files, selected, onSelect }) {
   return (
-    <div className="file-tabs" role="tablist" aria-label="Files">
+    <div className="file-tabs" role="tablist" aria-label={t("common.files")}>
       {files.map((file) => (
         <button
           className={selected === file.label ? "active" : ""}
@@ -936,11 +937,11 @@ function CodeBlock({ code, compact = false }) {
       <div className="code-toolbar">
         <span>
           <Terminal size={15} aria-hidden="true" />
-          code
+          {t("common.code")}
         </span>
         <button onClick={copy} type="button">
           <Copy size={14} aria-hidden="true" />
-          {copied ? "Copied" : "Copy"}
+          {copied ? t("common.copied") : t("common.copy")}
         </button>
       </div>
       <pre>
@@ -962,31 +963,31 @@ function CodeExplanation({ code, context, agent }) {
 
   return (
     <section className="code-explain">
-      <h2>Code walkthrough</h2>
+      <h2>{t("code.walkthrough")}</h2>
       <div className="walkthrough-grid">
         <WalkthroughCard
           icon={Layers3}
-          title="Imports"
-          items={imports.length ? imports : ["No import block in this file section."]}
+          title={t("code.imports")}
+          items={imports.length ? imports : [t("code.noImports")]}
         />
         <WalkthroughCard
           icon={Zap}
-          title="Functions"
-          items={functions.length ? functions.slice(0, 8) : ["No top-level functions detected."]}
+          title={t("code.functions")}
+          items={functions.length ? functions.slice(0, 8) : [t("code.noFunctions")]}
         />
         <WalkthroughCard
           icon={Network}
-          title="Classes"
-          items={classes.length ? classes.slice(0, 6) : ["No classes detected."]}
+          title={t("code.classes")}
+          items={classes.length ? classes.slice(0, 6) : [t("code.noClasses")]}
         />
         <WalkthroughCard
           icon={Play}
-          title="Role"
+          title={t("code.role")}
           items={[
             context === "agent.py"
-              ? `Entrypoint for ${agent?.framework || "the"} implementation.`
-              : `Reference file for ${context}.`,
-            `${lines.length} non-empty lines are bundled into this page.`,
+              ? t("code.entrypoint", { framework: agent?.framework || "the" })
+              : t("code.reference", { context }),
+            t("code.lineCount", { count: lines.length }),
           ]}
         />
       </div>
@@ -1011,11 +1012,11 @@ function WalkthroughCard({ icon: Icon, title, items }) {
 function NotFound() {
   return (
     <PageHero
-      eyebrow="Missing page"
-      title="This atlas page was not found"
-      description="The catalog route does not match a local agent, lesson, use case, or framework."
+      eyebrow={t("notFound.eyebrow")}
+      title={t("notFound.title")}
+      description={t("notFound.description")}
       icon={Search}
-      action={{ label: "Back to atlas", href: "/" }}
+      action={{ label: t("notFound.back"), href: "/" }}
     />
   );
 }

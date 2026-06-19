@@ -1,0 +1,217 @@
+{
+  "meta": {
+    "title": "500 个 AI 智能体项目集锦",
+    "description": "一个 React 项目集锦，包含 500+ AI 智能体项目、可运行实现、用例以及 CrewAI MCP 课程。"
+  },
+  "nav": {
+    "atlas": "项目集锦",
+    "course": "课程",
+    "agents": "智能体",
+    "useCases": "用例",
+    "frameworks": "框架",
+    "mainAria": "主导航",
+    "projectMap": "500+ 项目地图"
+  },
+  "common": {
+    "github": "GitHub",
+    "all": "全部",
+    "detail": "详情",
+    "redirect": "跳转",
+    "code": "代码",
+    "copy": "复制",
+    "copied": "已复制",
+    "files": "文件",
+    "searchCatalog": "搜索目录",
+    "frameworkFilter": "框架筛选",
+    "fileNotFound": "# 未找到文件内容"
+  },
+  "home": {
+    "eyebrow": "课程首页 + 项目集锦",
+    "title": "500+ AI 智能体项目",
+    "description": "一个 React 项目集锦，用于学习、浏览、运行和跳转到此仓库中最优秀的 AI 智能体示例。",
+    "startCourse": "开始课程",
+    "browseUseCases": "浏览用例",
+    "graphAria": "交互式智能体集锦关系图",
+    "graphCourse": "CrewAI 课程",
+    "graphAgents": "可运行智能体",
+    "graphUseCases": "用例",
+    "graphFrameworks": "框架",
+    "graphCodePages": "代码页面",
+    "agentState": "agent_state",
+    "ready": "就绪",
+    "nodes": "节点数：{count}",
+    "statsAgents": "可运行智能体",
+    "statsUseCases": "README 用例",
+    "statsFrameworks": "框架族",
+    "statsLessons": "课程章节",
+    "startHere": "从这里开始",
+    "courseTitle": "CrewAI 结合 FastMCP 风格的前置课程",
+    "courseDescription": "课程是指引入口，随后项目集锦展开为本地代码智能体和 README 链接的外部示例。",
+    "openCourse": "打开课程页面",
+    "liveCatalog": "在线目录",
+    "searchTitle": "搜索每个本地智能体和 README 表格行",
+    "heroAlt": "AI 智能体用例地图",
+    "runnableCode": "可运行代码",
+    "localAgents": "本地智能体实现",
+    "viewAgents": "查看所有智能体",
+    "readmeUseCases": "README 用例",
+    "externalProjects": "拥有专用页面的外部项目",
+    "viewUseCases": "查看所有用例",
+    "decisionSupport": "决策支持",
+    "frameworkMap": "框架地图",
+    "compareFrameworks": "比较框架"
+  },
+  "search": {
+    "placeholder": "搜索智能体、用例、框架、行业"
+  },
+  "course": {
+    "eyebrow": "课程",
+    "title": "CrewAI 结合 FastMCP 风格集成",
+    "fallbackDescription": "一门使用 MCP 风格工具边界构建 CrewAI 工作流的实践课程。",
+    "learningPath": "学习路径",
+    "learningDescription": "每节课拥有独立的页面，包含目标、运行命令、代码文件和代码走读面板。",
+    "lessons": "课程章节",
+    "separatePages": "独立课程页面",
+    "lesson": "第 {number} 课",
+    "objectives": "学习目标",
+    "run": "运行"
+  },
+  "agents": {
+    "eyebrow": "可运行智能体",
+    "title": "每个实现的本地代码页面",
+    "description": "每个智能体页面介绍框架、配置、运行命令、架构以及 agents/ 中的代码结构。",
+    "agentEyebrow": "{framework} 智能体",
+    "runFiveMinutes": "5 分钟内运行",
+    "architecture": "架构",
+    "howItWorks": "工作原理",
+    "related": "相关 {framework} 智能体",
+    "defaultLoad": "加载 {llm} 的配置",
+    "defaultWorkflow": "围绕核心任务创建 {framework} 工作流",
+    "defaultInput": "通过命令行或默认值接收用户输入",
+    "defaultTools": "调用工具、模型或本地数据辅助函数",
+    "defaultResult": "向用户返回结构化结果",
+    "metadata": "项目元数据",
+    "path": "路径",
+    "framework": "框架",
+    "difficulty": "难度",
+    "industry": "行业",
+    "model": "模型",
+    "language": "语言",
+    "flowInput": "输入",
+    "flowState": "状态",
+    "flowNode": "节点",
+    "flowTool": "工具",
+    "flowResponse": "响应",
+    "flowGoal": "目标",
+    "flowAgent": "智能体",
+    "flowTask": "任务",
+    "flowCrew": "团队",
+    "flowOutput": "输出",
+    "flowPlanner": "规划器",
+    "flowModel": "模型"
+  },
+  "useCases": {
+    "eyebrow": "README 目录",
+    "title": "每个 README 用例的专用页面",
+    "description": "目录从仓库 README 表格中解析而来，因此每个外部项目都拥有页面、来源章节和跳转路由。",
+    "matching": "{count} 个匹配用例",
+    "metadata": "用例元数据",
+    "framework": "框架",
+    "industry": "行业",
+    "source": "来源",
+    "resource": "资源",
+    "openRedirect": "打开跳转",
+    "whatThisAdds": "新增内容",
+    "whatThisAddsDescription": "此页面将 README 表格行转换为持久的目录条目，包含上下文、框架分组、行业筛选以及来源项目的跳转路由。",
+    "relatedAgents": "相关本地智能体",
+    "similar": "类似用例",
+    "redirectEyebrow": "跳转",
+    "opening": "正在打开 {target}。",
+    "sourceProject": "来源项目",
+    "openNow": "立即打开"
+  },
+  "frameworks": {
+    "eyebrow": "框架",
+    "choose": "选择合适的智能体框架",
+    "description": "比较此仓库中的主要框架族，然后跳转到匹配的智能体和示例。",
+    "localAgents": "本地智能体",
+    "readmeUseCases": "README 用例",
+    "open": "打开框架",
+    "matching": "匹配示例"
+  },
+  "code": {
+    "walkthrough": "代码走读",
+    "imports": "导入",
+    "functions": "函数",
+    "classes": "类",
+    "role": "角色",
+    "noImports": "此文件部分没有导入块。",
+    "noFunctions": "未检测到顶级函数。",
+    "noClasses": "未检测到类。",
+    "entrypoint": "{framework} 实现的入口点。",
+    "reference": "{context} 的参考文件。",
+    "lineCount": "此页面包含 {count} 个非空行。"
+  },
+  "notFound": {
+    "eyebrow": "页面未找到",
+    "title": "未找到此集锦页面",
+    "description": "目录路由未匹配到本地智能体、课程、用例或框架。",
+    "back": "返回集锦"
+  },
+  "catalog": {
+    "courseLessons": {
+      "lesson-01": {
+        "title": "第一个 CrewAI 研究员",
+        "summary": "构建一个研究员智能体，赋予其明确角色，运行一个任务，并检查响应路径。",
+        "objectives": [
+          "安装 CrewAI 课程依赖",
+          "定义一个角色驱动的研究员智能体",
+          "将智能体关联到一个明确的任务",
+          "运行团队并读取最终输出"
+        ]
+      },
+      "lesson-02": {
+        "title": "多智能体研究团队",
+        "summary": "将研究、写作和编辑职责拆分为一个顺序执行的 CrewAI 工作流。",
+        "objectives": [
+          "创建多个专业智能体",
+          "将任务连接成顺序流程",
+          "将上下文从研究员传递给写作者再传递给编辑",
+          "理解工具在 CrewAI 中的位置"
+        ]
+      },
+      "lesson-03": {
+        "title": "CrewAI 与 FastMCP 风格工具",
+        "summary": "使用 FastMCP 风格的工具接口，让 CrewAI 智能体查询结构化项目数据并生成状态报告。",
+        "objectives": [
+          "建模类似 MCP 服务器访问的工具契约",
+          "让智能体通过工具请求项目记录",
+          "生成可供管理层使用的项目状态报告",
+          "了解 MCP 风格边界如何改进智能体设计"
+        ]
+      }
+    },
+    "frameworks": {
+      "langgraph": {
+        "bestFor": "有状态工作流、图控制、重试、RAG 及生产路由。",
+        "decision": "当智能体需要显式状态转换和可靠的恢复路径时选用。"
+      },
+      "crewai": {
+        "bestFor": "基于角色的团队、业务自动化、可重复的任务交接和快速原型开发。",
+        "decision": "当项目自然映射为带有目标和任务的专业团队时选用。"
+      },
+      "autogen": {
+        "bestFor": "代码生成、研究协作、反馈循环和可执行的实验。",
+        "decision": "当智能体需要对话、批评、运行代码并迭代优化时选用。"
+      },
+      "agno": {
+        "bestFor": "轻量级工具智能体、快速迭代、模型灵活性和紧凑应用。",
+        "decision": "当你想要一个低仪式感、专注工具调用的智能体时选用。"
+      },
+      "llamaindex": {
+        "bestFor": "文档问答、企业检索、数据连接器和知识工作流。",
+        "decision": "当数据管道与智能体行为同等重要时选用。"
+      }
+    }
+  }
+}

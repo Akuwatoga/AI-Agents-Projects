@@ -1,0 +1,11 @@
+title: customer-support-agent
+description: 基于 RAG 的客户支持智能体，使用 LangGraph 实现升级路由
+author: ashishpatel26
+language: python
+framework: langgraph
+tags: [customer-support, rag, langgraph, faiss, escalation]
+industry: customer-service
+difficulty: advanced
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

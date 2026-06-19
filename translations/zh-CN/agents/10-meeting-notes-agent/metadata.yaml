@@ -1,0 +1,11 @@
+title: meeting-notes-agent
+description: 将会议转录稿转换为包含行动项和决策的结构化笔记
+author: ashishpatel26
+language: python
+framework: langchain
+tags: [productivity, meetings, summarization, action-items]
+industry: productivity
+difficulty: beginner
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

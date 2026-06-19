@@ -1,0 +1,11 @@
+title: web-research-agent
+description: 搜索任何主题的网络内容并综合生成结构化研究报告
+author: ashishpatel26
+language: python
+framework: langgraph
+tags: [research, web-search, rag, langgraph]
+industry: general
+difficulty: intermediate
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

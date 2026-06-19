@@ -3,6 +3,7 @@ import industryImage from "../../images/industry_usecase1.png";
 import repoReadme from "../../README.md?raw";
 import agentsReadme from "../../agents/README.md?raw";
 import courseReadme from "../../crewai_mcp_course/README.md?raw";
+import { currentLocale, localeData } from "./i18n.js";
 
 const agentFiles = import.meta.glob(
   "../../agents/*/{README.md,agent.py,metadata.yaml,requirements.txt}",
@@ -18,6 +19,26 @@ const courseFiles = import.meta.glob("../../crewai_mcp_course/**/*.{md,py,txt}",
   import: "default",
   query: "?raw",
 });
+
+const translatedFiles = import.meta.glob("../../translations/*/**/*.{md,yaml}", {
+  eager: true,
+  import: "default",
+  query: "?raw",
+});
+
+const translatedRootReadmes = import.meta.glob("../../translations/*/README.md", {
+  eager: true,
+  import: "default",
+  query: "?raw",
+});
+
+function getTranslatedFile(pathSuffix) {
+  const localePath = `/translations/${currentLocale}/${pathSuffix}`;
+  const entry = [...Object.entries(translatedFiles), ...Object.entries(translatedRootReadmes)].find(
+    ([path]) => path.endsWith(localePath),
+  );
+  return entry?.[1] || "";
+}
 
 export function stripMarkdown(value = "") {
   return String(value)
@@ -42,7 +63,7 @@ export function slugify(value = "item") {
 
 function titleCase(value = "") {
   return stripMarkdown(value)
-    .replace(/^[^A-Za-z0-9]+/, "")
+    .replace(/^[^\p{L}\p{N}]+/u, "")
     .replace(/[-_]+/g, " ")
     .split(" ")
     .filter(Boolean)
@@ -66,7 +87,7 @@ function formatFramework(value = "") {
 
 function cleanCell(value = "") {
   return stripMarkdown(value)
-    .replace(/^[^A-Za-z0-9]+/, "")
+    .replace(/^[^\p{L}\p{N}]+/u, "")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -327,8 +348,12 @@ function buildAgents() {
 
   return Object.entries(folders)
     .map(([folder, files]) => {
-      const metadata = parseYaml(files["metadata.yaml"] || "");
-      const readme = files["README.md"] || "";
+      const sourceMetadata = parseYaml(files["metadata.yaml"] || "");
+      const translatedMetadata = parseYaml(
+        getTranslatedFile(`agents/${folder}/metadata.yaml`),
+      );
+      const metadata = { ...sourceMetadata, ...translatedMetadata };
+      const readme = getTranslatedFile(`agents/${folder}/README.md`) || files["README.md"] || "";
       const code = files["agent.py"] || "";
       const setupSection = extractSection(readme, /setup|installation/i);
       const runSection = extractSection(readme, /run|usage/i);
@@ -369,11 +394,13 @@ function buildAgents() {
 }
 
 function getCourseFile(pathSuffix) {
+  const translated = getTranslatedFile(pathSuffix);
+  if (translated && /\.(md|yaml)$/i.test(pathSuffix)) return translated;
   const entry = Object.entries(courseFiles).find(([path]) => path.endsWith(pathSuffix));
   return entry ? entry[1] : "";
 }
 
-const courseLessons = [
+const sourceCourseLessons = [
   {
     slug: "lesson-01",
     number: "01",
@@ -459,7 +486,12 @@ const courseLessons = [
   },
 ];
 
-export const frameworks = [
+const courseLessons = sourceCourseLessons.map((lesson) => ({
+  ...lesson,
+  ...localeData(`catalog.courseLessons.${lesson.slug}`, {}),
+}));
+
+const sourceFrameworks = [
   {
     slug: "langgraph",
     name: "LangGraph",
@@ -497,12 +529,41 @@ export const frameworks = [
   },
 ];
 
+export const frameworks = sourceFrameworks.map((framework) => ({
+  ...framework,
+  ...localeData(`catalog.frameworks.${framework.slug}`, {}),
+}));
+
+function buildUseCases() {
+  const source = parseReadmeUseCases(repoReadme);
+  const translatedReadme = getTranslatedFile("README.md");
+  if (!translatedReadme) return source;
+
+  const translated = parseReadmeUseCases(translatedReadme);
+  if (translated.length !== source.length) {
+    console.warn(
+      `Ignoring ${currentLocale} README catalog: expected ${source.length} rows, found ${translated.length}.`,
+    );
+    return source;
+  }
+
+  return source.map((item, index) => ({
+    ...item,
+    ...translated[index],
+    id: item.id,
+    slug: item.slug,
+    url: item.url,
+    framework: item.framework,
+    resourceType: item.resourceType,
+  }));
+}
+
 export const catalog = {
   repoReadme,
-  agentsReadme,
-  courseReadme,
+  agentsReadme: getTranslatedFile("agents/README.md") || agentsReadme,
+  courseReadme: getTranslatedFile("crewai_mcp_course/README.md") || courseReadme,
   agents: buildAgents(),
-  useCases: parseReadmeUseCases(repoReadme),
+  useCases: buildUseCases(),
   courseLessons,
   frameworks,
   images: {

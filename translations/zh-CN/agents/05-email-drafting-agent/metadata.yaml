@@ -1,0 +1,11 @@
+title: email-drafting-agent
+description: 双智能体 CrewAI 系统，根据上下文起草专业邮件
+author: ashishpatel26
+language: python
+framework: crewai
+tags: [email, communication, crewai, productivity]
+industry: communication
+difficulty: beginner
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt
