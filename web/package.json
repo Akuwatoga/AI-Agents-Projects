@@ -1,8 +1,16 @@
 {
   "name": "ai-agents-atlas",
   "private": true,
-  "version": "0.1.0-zh.2",
+  "version": "0.1.0-zh.3",
   "type": "module",
+  "homepage": "https://agent-project.zqtechlab.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Akuwatoga/AI-Agents-Projects.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Akuwatoga/AI-Agents-Projects/issues"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

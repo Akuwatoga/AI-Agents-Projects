@@ -1,6 +1,6 @@
 # 500+ AI 智能体项目与用例（500+ AI Agent Projects & Use Cases）
 
-[English](../../README.md) | **简体中文** | [在线站点](https://agent-project.zqtechlab.com)
+[中文项目首页](../../README.md) | [English](../../README.en.md) | [在线站点](https://agent-project.zqtechlab.com)
 
 > 本仓库是由 ZQTechLab 维护的
 > [ashishpatel26/500-AI-Agents-Projects](https://github.com/ashishpatel26/500-AI-Agents-Projects)
@@ -10,12 +10,12 @@
 
 <div align="center">
 
-[![GitHub Stars](https://img.shields.io/github/stars/ashishpatel26/500-AI-Agents-Projects?style=for-the-badge&color=yellow)](https://github.com/ashishpatel26/500-AI-Agents-Projects/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/ashishpatel26/500-AI-Agents-Projects?style=for-the-badge&color=blue)](https://github.com/ashishpatel26/500-AI-Agents-Projects/network/members)
-[![Contributors](https://img.shields.io/github/contributors/ashishpatel26/500-AI-Agents-Projects?style=for-the-badge&color=green)](https://github.com/ashishpatel26/500-AI-Agents-Projects/graphs/contributors)
+[![GitHub Stars](https://img.shields.io/github/stars/Akuwatoga/AI-Agents-Projects?style=for-the-badge&color=yellow)](https://github.com/Akuwatoga/AI-Agents-Projects/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/Akuwatoga/AI-Agents-Projects?style=for-the-badge&color=blue)](https://github.com/Akuwatoga/AI-Agents-Projects/network/members)
+[![Contributors](https://img.shields.io/github/contributors/Akuwatoga/AI-Agents-Projects?style=for-the-badge&color=green)](https://github.com/Akuwatoga/AI-Agents-Projects/graphs/contributors)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=for-the-badge)](CONTRIBUTION.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-red?style=for-the-badge)](LICENSE)
-[![Last Commit](https://img.shields.io/github/last-commit/ashishpatel26/500-AI-Agents-Projects?style=for-the-badge)](https://github.com/ashishpatel26/500-AI-Agents-Projects/commits/main)
+[![Last Commit](https://img.shields.io/github/last-commit/Akuwatoga/AI-Agents-Projects?style=for-the-badge)](https://github.com/Akuwatoga/AI-Agents-Projects/commits/main)
 
 **最全面的 AI 智能体项目、用例和可运行实现合集。**
 
@@ -45,8 +45,8 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/ashishpatel26/500-AI-Agents-Projects.git
-cd 500-AI-Agents-Projects
+git clone https://github.com/Akuwatoga/AI-Agents-Projects.git
+cd AI-Agents-Projects
 
 # 运行 agents/ 目录中的任意智能体
 cd agents/01-web-research-agent
@@ -305,15 +305,15 @@ python agent.py
 <picture>
   <source
     media="(prefers-color-scheme: dark)"
-    srcset="https://api.star-history.com/svg?repos=ashishpatel26/500-AI-Agents-Projects&type=date&legend=top-left"
+    srcset="https://api.star-history.com/svg?repos=Akuwatoga/AI-Agents-Projects&type=date&legend=top-left"
   />
   <source
     media="(prefers-color-scheme: light)"
-    srcset="https://api.star-history.com/svg?repos=ashishpatel26/500-AI-Agents-Projects&type=date&legend=top-left"
+    srcset="https://api.star-history.com/svg?repos=Akuwatoga/AI-Agents-Projects&type=date&legend=top-left"
   />
   <img
     alt="Star History Chart"
-    src="https://api.star-history.com/svg?repos=ashishpatel26/500-AI-Agents-Projects&type=date&legend=top-left"
+    src="https://api.star-history.com/svg?repos=Akuwatoga/AI-Agents-Projects&type=date&legend=top-left"
   />
 </picture>
 
@@ -329,6 +329,6 @@ python agent.py
 
 **⭐ 如果你觉得这个仓库有用，请给它一个 Star——这能帮助更多人发现它！**
 
-[报告问题](https://github.com/ashishpatel26/500-AI-Agents-Projects/issues) • [请求智能体](https://github.com/ashishpatel26/500-AI-Agents-Projects/issues/new?template=feature_request.md) • [贡献](CONTRIBUTION.md)
+[报告问题](https://github.com/Akuwatoga/AI-Agents-Projects/issues) • [请求智能体](https://github.com/Akuwatoga/AI-Agents-Projects/issues/new?template=feature_request.md) • [贡献](CONTRIBUTION.md)
 
 </div>

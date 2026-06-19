@@ -84,7 +84,7 @@ if (strict) {
   errors.push(...missingKeys.map((key) => `Missing locale key: ${key}`));
 
   const markdownFiles = [
-    "README.md",
+    "README.en.md",
     "agents/README.md",
     "crewai_mcp_course/README.md",
     ...fs
@@ -97,9 +97,10 @@ if (strict) {
   ];
 
   for (const relativePath of markdownFiles) {
+    const targetRelativePath = relativePath === "README.en.md" ? "README.md" : relativePath;
     compareMarkdown(
       path.join(repoRoot, relativePath),
-      path.join(repoRoot, "translations/zh-CN", relativePath),
+      path.join(repoRoot, "translations/zh-CN", targetRelativePath),
     );
   }
 }

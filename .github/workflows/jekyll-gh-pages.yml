@@ -8,6 +8,7 @@ on:
     paths:
       - "web/**"
       - "README.md"
+      - "README.en.md"
       - "agents/**"
       - "crewai_mcp_course/**"
       - ".github/workflows/jekyll-gh-pages.yml"

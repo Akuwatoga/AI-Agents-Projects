@@ -4,7 +4,7 @@ WORKDIR /app
 COPY web/package.json web/package-lock.json ./web/
 RUN npm ci --prefix web
 
-COPY README.md LICENSE ./
+COPY README.md README.en.md LICENSE ./
 COPY agents ./agents
 COPY crewai_mcp_course ./crewai_mcp_course
 COPY images ./images

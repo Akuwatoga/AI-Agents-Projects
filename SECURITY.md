@@ -12,8 +12,8 @@
 
 If you discover a security vulnerability in this repository or any of the agent implementations, please report it responsibly:
 
-1. **Email**: ashishpatel.ce.2011@gmail.com with subject `[SECURITY] 500-AI-Agents-Projects`
-2. **GitHub**: Use [GitHub's private security advisory](https://github.com/ashishpatel26/500-AI-Agents-Projects/security/advisories/new)
+Use [GitHub's private security advisory](https://github.com/Akuwatoga/AI-Agents-Projects/security/advisories/new).
+Do not disclose unpatched vulnerabilities through a public issue.
 
 ### What to include
 

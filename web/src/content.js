@@ -1,6 +1,6 @@
 import heroImage from "../../images/AIAgentUseCase.jpg";
 import industryImage from "../../images/industry_usecase1.png";
-import repoReadme from "../../README.md?raw";
+import repoReadme from "../../README.en.md?raw";
 import agentsReadme from "../../agents/README.md?raw";
 import courseReadme from "../../crewai_mcp_course/README.md?raw";
 import { currentLocale, localeData } from "./i18n.js";

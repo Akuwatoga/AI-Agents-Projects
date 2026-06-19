@@ -7,9 +7,11 @@ on:
     branches: [main]
     paths:
       - 'README.md'
+      - 'README.en.md'
   pull_request:
     paths:
       - 'README.md'
+      - 'README.en.md'
   workflow_dispatch:
 
 permissions:
@@ -37,7 +39,7 @@ jobs:
             --timeout 30
             --retry-wait-time 5
             --max-retries 3
-            README.md
+            README.md README.en.md
           fail: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

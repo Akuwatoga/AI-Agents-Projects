@@ -10,7 +10,7 @@ LLM 必须完成两类文件：
 2. 将下列英文文档按相同目录结构翻译到 `translations/zh-CN/`：
 
 ```text
-README.md
+README.en.md
 agents/README.md
 agents/*/README.md
 agents/*/metadata.yaml
@@ -20,7 +20,7 @@ crewai_mcp_course/README.md
 目标示例：
 
 ```text
-README.md
+README.en.md
 -> translations/zh-CN/README.md
 
 agents/01-web-research-agent/README.md
@@ -67,7 +67,8 @@ agents/01-web-research-agent/README.md
 
 ## 5. 根 README 的特殊规则
 
-根 `README.md` 会被程序解析成数百个案例页面，结构必须严格保持。
+根 `README.en.md` 会被程序解析成数百个案例页面，结构必须严格保持。根 `README.md`
+是 GitHub 默认展示的中文项目入口。
 
 1. 所有表格保持原行序、列序和行数。
 2. 表头翻译后必须保留英文识别词，例如：
