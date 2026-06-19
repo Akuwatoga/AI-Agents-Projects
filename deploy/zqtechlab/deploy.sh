@@ -12,6 +12,7 @@ rsync_args=(
   --delete
   --itemize-changes
   --exclude ".git"
+  --exclude ".gstack"
   --exclude ".env"
   --exclude ".env.*"
   --exclude "node_modules"
